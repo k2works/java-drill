@@ -1,3 +1,5 @@
+[![Java CI with Gradle](https://github.com/k2works/java-drill/actions/workflows/gradle.yml/badge.svg)](https://github.com/k2works/java-drill/actions/workflows/gradle.yml)
+
 # Javaで練習するアルゴリズムとデータ構造とテスト駆動開発
 
 # Quick Startup
