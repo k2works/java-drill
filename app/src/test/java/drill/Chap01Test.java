@@ -2,6 +2,7 @@ package drill;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import org.junit.jupiter.api.Test;
@@ -35,6 +36,31 @@ public class Chap01Test {
         assertEquals("その値は負です", Chap01.judgeSign(-5));
         assertEquals("その値は0です", Chap01.judgeSign(0));
     }
+
+    @Test
+    void while文による繰り返し() {
+        assertEquals(15, Chap01.sum1ToNwhile(5));
+    }
+
+    @Test
+    void for文による繰り返し() {
+        assertEquals(15, Chap01.sum1ToNfor(5));
+    }
+
+    @Test
+    void each文による繰り返し() {
+        assertEquals(15, Chap01.sum1ToNeach(5));
+    }
+
+    @Test
+    void streamAPIによる繰り返し() {
+        assertEquals(15, Chap01.sum1ToNstream(5));
+    }
+
+    @Test
+    void ガウスの方法() {
+        assertEquals(15, Chap01.sumGuss(5));
+    }
 }
 
 class Chap01 {
@@ -57,5 +83,40 @@ class Chap01 {
             return "その値は0です";
         }
         
+    }
+
+    public static Integer sum1ToNwhile(int n) {
+        int sum = 0;
+        int i = 1;
+        while (i <= n) {
+            sum += i;
+            i += 1;
+        }
+        return sum;
+    }
+
+    public static Integer sum1ToNfor(int n) {
+        int sum = 0;
+        for (int i = 1; i <= n; i++) {
+            sum += i;
+        }
+        return sum;
+    }
+
+    public static Integer sum1ToNeach(int n) {
+        int sum = 0;
+        for (int i : IntStream.rangeClosed(1, n).toArray()) {
+            sum += i;
+        }
+        return sum;
+    }
+
+    public static Integer sum1ToNstream(int n) {
+        return IntStream.rangeClosed(1, n).reduce((sum, i) -> sum + i).getAsInt();
+    }
+
+    public static Integer sumGuss(int n) {
+        int sum = n * (n + 1) / 2;
+        return sum;
     }
 }
