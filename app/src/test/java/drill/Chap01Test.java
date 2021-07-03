@@ -28,6 +28,13 @@ public class Chap01Test {
                 Arguments.of(2, 2, 3, 3), Arguments.of(2, 3, 1, 3), Arguments.of(2, 3, 2, 3), Arguments.of(1, 3, 2, 3),
                 Arguments.of(2, 3, 3, 3), Arguments.of(1, 2, 3, 3));
     }
+
+    @Test
+    void 読み込んだ整数値の符号を表示() {
+        assertEquals("その値は正です", Chap01.judgeSign(17));
+        assertEquals("その値は負です", Chap01.judgeSign(-5));
+        assertEquals("その値は0です", Chap01.judgeSign(0));
+    }
 }
 
 class Chap01 {
@@ -39,5 +46,16 @@ class Chap01 {
             maximum = k;
 
         return maximum;
+    }
+
+    public static Object judgeSign(int i) {
+        if (i > 0)
+            return "その値は正です";
+        if (i < 0) {
+            return "その値は負です";
+        } else {
+            return "その値は0です";
+        }
+        
     }
 }
